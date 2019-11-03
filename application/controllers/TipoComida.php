@@ -5,10 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class TipoComida extends MY_Controller {
 
 
-    public function construct()
+    public function __construct()
     {
-        parent:: construct();
-
+        parent::__construct(); 
         $this->ValidarInicioSesion();
         $this->load->library('pagination');
         $this->load->model('mod_tipocomida');
@@ -20,9 +19,12 @@ class TipoComida extends MY_Controller {
 
         $params['response'] = $this->session->flashdata('response');
 
-        $this->carabiner->js(array( array('/plugins/confirm/jquery-confirm.min.js'), array('/views/tiposcomida/listado.js')));
+        $this->carabiner->js(array( 
+            array('/plugins/confirm/jquery-confirm.min.js'), array('/views/tiposcomida/listado.js')));
 
-        $this->carabiner->css(array( array('/plugins/confirm/jquery-confirm.min.css')));
+        $this->carabiner->css(array( 
+            array('/plugins/confirm/jquery-confirm.min.css')
+        ));
 
         $params['registros'] = $this->mod_tipocomida->Listado($pagina);
         $params['totalRegistros'] = $this->mod_tipocomida->Total();
@@ -67,8 +69,8 @@ class TipoComida extends MY_Controller {
     {
         $response = array( 'done' => false,'message' => 'Llene todos los campos solicitados');
 
-        if ($this->input->post('ti_tipo_comida'))
-        {
+        if ($this->input->post('ti_tipo_comida')
+        ){
             $response = $this->mod_tipocomida->Guardar();
         }
 

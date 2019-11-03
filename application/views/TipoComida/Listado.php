@@ -33,7 +33,9 @@
         <tbody>
             <?php foreach($registros as $tipo):?>
                 <tr>
-                    <td><?php echo($tipo['ti_tipo_comida']); ?></td>
+                    <td>
+                        <?php echo($tipo['ti_tipo_comida']); ?>
+                    </td>
                     <td class="text-center">
                         <span class="badge badge-<?php echo(($tipo['totalPlatillos'] == 0 ? 'warning' : 'info')); ?>">
                             <?php echo($tipo['totalPlatillos']); ?>
